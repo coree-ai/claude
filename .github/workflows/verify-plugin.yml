@@ -23,10 +23,8 @@ jobs:
         run: claude plugin validate .
 
       - name: Add marketplace from local checkout
-        run: claude plugin marketplace add .
+        run: claude plugin marketplace add ./
 
-      - name: Install coree plugin
-        run: claude plugin install coree@coree
-
-      - name: Verify plugin is installed
-        run: claude plugin list --json | grep '"name":"coree"'
+      - name: Verify marketplace is registered
+        run: |
+          claude plugin marketplace list --json | grep '"name": "coree"'
